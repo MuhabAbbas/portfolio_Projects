@@ -42,22 +42,21 @@ WITH avg_table AS (
 -- average steps per days of the week
 
 WITH avg_steps AS(
-	SELECT  *, datepart(DW, ActivityDay) as day_of_week
-	FROM [dbo].[dailySteps_merged$])
-	,avg_steps1 AS(
-	SELECT case when day_of_week = 1 then 'Sunday'
+SELECT  *, datepart(DW, ActivityDay) as day_of_week
+FROM [dbo].[dailySteps_merged$])
+,avg_steps1 AS(
+SELECT case when day_of_week = 1 then 'Sunday'
             when day_of_week = 2 then 'Monday'
-			when day_of_week = 3 then 'Tuesday'
-			when day_of_week = 4 then 'Wednesday'
-			when day_of_week = 5 then 'Thursday'
-			when day_of_week = 6 then 'Friday'
-			Else 'Saturday' 
-			end as Week_day, [StepTotal],day_of_week
-	FROM avg_steps)
-	SELECT Week_day, ROUND(avg([StepTotal]),2) as avg_daily_steps
-	FROM avg_steps1
-	GROUP BY Week_day
-	ORDER BY avg_daily_steps DESC
+	    when day_of_week = 3 then 'Tuesday'
+	    when day_of_week = 4 then 'Wednesday'
+	    when day_of_week = 5 then 'Thursday'
+	    when day_of_week = 6 then 'Friday'
+	    Else 'Saturday' end as Week_day, [StepTotal],day_of_week
+FROM avg_steps)
+SELECT Week_day, ROUND(avg([StepTotal]),2) as avg_daily_steps
+FROM avg_steps1
+GROUP BY Week_day
+ORDER BY avg_daily_steps DESC
 
 -- are the users active or somewhat active?
 
