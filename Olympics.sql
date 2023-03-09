@@ -8,10 +8,10 @@ SELECT [ID]
       ,case when sex = 'M' then 'Male' 
 	    when sex = 'F' then 'Female' end as Gender
       ,[Age]
-	  ,case when age < 18 then 'Under 18'
-		when age between 18 and 25 then '18-25'
-		when AGE BETWEEN 25 AND 30 THEN '25-30'
-		when AGE > 30 THEN 'Over 30' end as [Age Grouping]
+      ,case when age < 18 then 'Under 18'
+	    when age between 18 and 25 then '18-25'
+	    when AGE BETWEEN 25 AND 30 THEN '25-30'
+	    when AGE > 30 THEN 'Over 30' end as [Age Grouping]
       ,[Height]
       ,[Weight]
       ,[NOC] as 'Nation Code'
